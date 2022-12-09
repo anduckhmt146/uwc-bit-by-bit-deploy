@@ -8,7 +8,7 @@ const Collector = [
     Address: 'Quận 1, HCM',
     Salary: 3000000,
     Avatar:
-      'https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/avatars/avatar_1.jpg',
+      'https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/avatar_1.jpg',
     License: 'C1',
   },
   {
@@ -20,7 +20,7 @@ const Collector = [
     Address: 'Quận 2, HCM',
     Salary: 5000000,
     Avatar:
-      'https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/avatars/avatar_2.jpg',
+      'https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/avatar_2.jpg',
     License: 'B2',
   },
   {
@@ -32,7 +32,7 @@ const Collector = [
     Address: 'Quận 3, HCM',
     Salary: 6000000,
     Avatar:
-      'https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/avatars/avatar_3.jpg',
+      'https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/avatar_3.jpg',
     License: 'C1',
   },
   {
@@ -44,7 +44,7 @@ const Collector = [
     Address: 'Quận 4, HCM',
     Salary: 5500000,
     Avatar:
-      'https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/avatars/avatar_4.jpg',
+      'https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/avatar_4.jpg',
     License: 'D',
   },
   {
@@ -56,7 +56,7 @@ const Collector = [
     Address: 'Dĩ An, Bình Dương',
     Salary: 5000000,
     Avatar:
-      'https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/avatars/avatar_5.jpg',
+      'https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/avatar_5.jpg',
     License: 'E',
   },
 ];

@@ -33,7 +33,7 @@ export default function NotFoundPage() {
 
           <Box
             component="img"
-            src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/illustration_404.svg"
+            src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/illustration_404.svg"
             sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
           />
 

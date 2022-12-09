@@ -76,7 +76,7 @@ export default function LoginForm() {
         }}>
         <Avatar
           alt="Logo"
-          src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/logo.png"
+          src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/logo.png"
           sx={{ width: 100, height: 100, m: 1 }}
         />
         <Typography component="h1" variant="h4">

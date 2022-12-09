@@ -7,7 +7,7 @@ const Logo = ({ disabledLink = false, sx, ...other }, ref) => {
   const logo = (
     <Avatar
       alt="Logo"
-      src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/logo.png"
+      src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/logo.png"
       sx={{ width: 60, height: 60, m: 1 }}
     />
   );

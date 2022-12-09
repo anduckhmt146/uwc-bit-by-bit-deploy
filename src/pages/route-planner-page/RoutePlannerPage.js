@@ -99,7 +99,7 @@ export default function RoutePlannerPage() {
             <Box
               component="img"
               alt="map"
-              src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/map.png"
+              src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/map.png"
             />
           </Paper>
         </Box>

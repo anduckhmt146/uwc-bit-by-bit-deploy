@@ -10,7 +10,7 @@ const StyledRoot = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundImage: `url("https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/login_background.jpg")`,
+  backgroundImage: `url("https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/login_background.jpg")`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',

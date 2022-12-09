@@ -5,7 +5,7 @@ import SvgColor from '../../components/svg-color';
 
 const icon = (name) => (
   <SvgColor
-    src={`https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/icons/navbar/${name}.svg`}
+    src={`https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/${name}.svg`}
     sx={{ width: 1, height: 1 }}
   />
 );

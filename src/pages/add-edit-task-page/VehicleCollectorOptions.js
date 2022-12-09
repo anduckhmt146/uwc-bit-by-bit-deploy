@@ -93,7 +93,7 @@ export default function VehicleCollectorOptions(props) {
               }}>
               <Avatar
                 alt="vehicle"
-                src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/vehicle.png"
+                src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/vehicle.png"
                 sx={{ width: 210, height: 150, mb: 2 }}
               />
               <Box
@@ -215,7 +215,7 @@ export default function VehicleCollectorOptions(props) {
                 }}>
                 <Avatar
                   alt="vehicle"
-                  src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/vehicle.png"
+                  src="https://raw.githubusercontent.com/anduc146khmt/resource/master/public/assets/vehicle.png"
                   sx={{ width: 70, height: 50 }}
                 />
                 <Box
