@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 // @mui
 import {
   Grid,
@@ -10,12 +10,12 @@ import {
   MenuItem,
   Popover,
   Avatar,
-} from "@mui/material";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+} from '@mui/material';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // mock
-import VEHICLELIST from "../../mock_data/Vehicle";
-import COLLECTORLIST from "../../mock_data/Collector";
+import VEHICLELIST from '../../mock_data/Vehicle';
+import COLLECTORLIST from '../../mock_data/Collector';
 
 export default function VehicleCollectorOptions(props) {
   //------------------------------------------------------
@@ -61,16 +61,15 @@ export default function VehicleCollectorOptions(props) {
       <Grid container spacing={5} sx={{ p: { xs: 1, md: 2 } }}>
         <Grid item xs={12} md={6}>
           <Typography variant="h4" sx={{ mb: 2 }}>
-            Chọn phương tiện:{" "}
+            Chọn phương tiện:{' '}
           </Typography>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "row",
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
               gap: 1,
-            }}
-          >
+            }}>
             <TextField
               fullWidth
               label="Mã phương tiện"
@@ -81,30 +80,28 @@ export default function VehicleCollectorOptions(props) {
               <LocalShippingIcon />
             </IconButton>
           </Box>
-          {vehicle.ID !== "None" ? (
+          {vehicle.ID !== 'None' ? (
             <Box
               sx={{
-                backgroundColor: "primary.lighter",
+                backgroundColor: 'primary.lighter',
                 py: 5,
                 mt: 3,
                 borderRadius: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}>
               <Avatar
                 alt="vehicle"
-                src="/assets/images/vehicle.png"
+                src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/vehicle.png"
                 sx={{ width: 210, height: 150, mb: 2 }}
               />
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                }}>
                 <Typography variant="h5" color="primary">
                   {vehicle.ID}
                 </Typography>
@@ -128,12 +125,11 @@ export default function VehicleCollectorOptions(props) {
           <Typography variant="h4">Chọn tài xế: </Typography>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "row",
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
               gap: 1,
-            }}
-          >
+            }}>
             <TextField
               margin="normal"
               fullWidth
@@ -149,17 +145,16 @@ export default function VehicleCollectorOptions(props) {
           {collector.ID !== 0 ? (
             <Box
               sx={{
-                backgroundColor: "primary.lighter",
+                backgroundColor: 'primary.lighter',
                 p: 3,
                 mt: 3,
                 borderRadius: 4,
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
                 gap: { xs: 5, md: 3 },
-              }}
-            >
+              }}>
               <Avatar
                 alt="ava"
                 src={collector.Avatar}
@@ -167,11 +162,10 @@ export default function VehicleCollectorOptions(props) {
               />
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                }}>
                 <Typography variant="h5" color="primary" gutterBottom>
                   {collector.Name}
                 </Typography>
@@ -192,48 +186,44 @@ export default function VehicleCollectorOptions(props) {
         open={Boolean(openVe)}
         anchorEl={openVe}
         onClose={handleCloseVehicle}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
           sx: {
             p: 1,
             mt: 1.5,
             ml: 0.75,
             width: 400,
-            "& .MuiMenuItem-root": {
-              typography: "body2",
+            '& .MuiMenuItem-root': {
+              typography: 'body2',
               borderRadius: 2,
             },
           },
-        }}
-      >
-        {" "}
+        }}>
+        {' '}
         <Stack sx={{ p: 1 }}>
           {VEHICLELIST.map((vehicle) => (
             <MenuItem
               key={vehicle.ID}
-              onClick={() => handleVehicleValue(vehicle)}
-            >
-              {" "}
+              onClick={() => handleVehicleValue(vehicle)}>
+              {' '}
               <Box
                 sx={{
-                  display: "flex",
+                  display: 'flex',
                   gap: 1,
-                  alignItems: "center",
-                }}
-              >
+                  alignItems: 'center',
+                }}>
                 <Avatar
                   alt="vehicle"
-                  src="/assets/images/vehicle.png"
+                  src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/vehicle.png"
                   sx={{ width: 70, height: 50 }}
                 />
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                  }}>
                   <Typography variant="h5">{vehicle.ID}</Typography>
                   <Typography>
                     Payload Capacity (t): {vehicle.Payload_Capacity}
@@ -255,36 +245,33 @@ export default function VehicleCollectorOptions(props) {
         open={Boolean(openCo)}
         anchorEl={openCo}
         onClose={handleCloseCollector}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
           sx: {
             p: 1,
             mt: 1.5,
             ml: 0.75,
             width: 400,
-            "& .MuiMenuItem-root": {
-              typography: "body2",
+            '& .MuiMenuItem-root': {
+              typography: 'body2',
               borderRadius: 2,
             },
           },
-        }}
-      >
-        {" "}
+        }}>
+        {' '}
         <Stack sx={{ p: 1 }}>
           {COLLECTORLIST.map((collector) => (
             <MenuItem
               key={collector.Name}
-              onClick={() => handleCollectorValue(collector)}
-            >
-              {" "}
+              onClick={() => handleCollectorValue(collector)}>
+              {' '}
               <Box
                 sx={{
-                  display: "flex",
+                  display: 'flex',
                   gap: 3,
-                  alignItems: "center",
-                }}
-              >
+                  alignItems: 'center',
+                }}>
                 <Avatar
                   alt="ava"
                   src={collector.Avatar}
@@ -292,11 +279,10 @@ export default function VehicleCollectorOptions(props) {
                 />
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                  }}>
                   <Typography variant="h6">{collector.Name}</Typography>
                   <Typography>Loại bằng lái: {collector.License}</Typography>
                 </Box>

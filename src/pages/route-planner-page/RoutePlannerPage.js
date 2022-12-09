@@ -1,5 +1,5 @@
-import { useState, forwardRef } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useState, forwardRef } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // @mui
 import {
   Box,
@@ -10,10 +10,10 @@ import {
   Slide,
   Dialog,
   DialogActions,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import Notification from "../../components/notification";
+import Notification from '../../components/notification';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -37,7 +37,7 @@ export default function RoutePlannerPage() {
   const [openNoti, setOpenNoti] = useState(false);
 
   const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpenNoti(false);
@@ -55,25 +55,22 @@ export default function RoutePlannerPage() {
     <>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           px: 5,
-        }}
-      >
+        }}>
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            gap: "18px",
-          }}
-        >
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            gap: '18px',
+          }}>
           <IconButton
-            sx={{ height: "32px", width: "32px" }}
-            onClick={navToTask}
-          >
-            <ArrowBackIcon sx={{ fontSize: "32px" }} />
+            sx={{ height: '32px', width: '32px' }}
+            onClick={navToTask}>
+            <ArrowBackIcon sx={{ fontSize: '32px' }} />
           </IconButton>
           <Typography variant="h4">Quay lại</Typography>
           <Typography variant="body1">#{taskid}</Typography>
@@ -83,15 +80,14 @@ export default function RoutePlannerPage() {
             <Box
               sx={{
                 p: 3,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
                 gap: 3,
-              }}
-            >
-              {" "}
+              }}>
+              {' '}
               <Typography variant="h3">Route Planner</Typography>
-              <Box sx={{ display: "flex", gap: 1 }}>
+              <Box sx={{ display: 'flex', gap: 1 }}>
                 <Button variant="contained" onClick={() => setOpenNoti(true)}>
                   Gửi
                 </Button>
@@ -100,7 +96,11 @@ export default function RoutePlannerPage() {
                 </Button>
               </Box>
             </Box>
-            <Box component="img" alt="map" src="/assets/images/map.png" />
+            <Box
+              component="img"
+              alt="map"
+              src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/map.png"
+            />
           </Paper>
         </Box>
       </Box>
@@ -109,26 +109,23 @@ export default function RoutePlannerPage() {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
+        aria-describedby="alert-dialog-slide-description">
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             p: 4,
-          }}
-        >
+          }}>
           <Typography variant="h2" sx={{ mb: 2 }}>
             10.5 km
           </Typography>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               gap: 1,
-            }}
-          >
+            }}>
             <Typography variant="body1">
               <b>Bắt đầu:</b> 69 Tân Lập, Đông Hòa, Dĩ An, Bình Dương (Chi nhánh
               1)

@@ -1,33 +1,27 @@
-import PropTypes from "prop-types";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 // @mui
-import { styled, alpha } from "@mui/material/styles";
-import {
-  Box,
-  Link,
-  Drawer,
-  Typography,
-  Avatar,
-} from "@mui/material";
+import { styled, alpha } from '@mui/material/styles';
+import { Box, Link, Drawer, Typography, Avatar } from '@mui/material';
 // mock
-import account from "../../mock_data/account";
+import account from '../../mock_data/account';
 // hooks
-import useResponsive from "../../hooks/useResponsive";
+import useResponsive from '../../hooks/useResponsive';
 // components
-import Logo from "../../components/logo";
-import Scrollbar from "../../components/scrollbar";
-import NavSection from "./NavSection";
+import Logo from '../../components/logo';
+import Scrollbar from '../../components/scrollbar';
+import NavSection from './NavSection';
 //
-import navConfig from "./config";
+import navConfig from './config';
 
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
 
-const StyledAccount = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
+const StyledAccount = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
   padding: theme.spacing(2, 2.5),
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   backgroundColor: alpha(theme.palette.grey[500], 0.12),
@@ -43,7 +37,7 @@ Nav.propTypes = {
 export default function Nav({ openNav, onCloseNav }) {
   const { pathname } = useLocation();
 
-  const isDesktop = useResponsive("up", "lg");
+  const isDesktop = useResponsive('up', 'lg');
 
   useEffect(() => {
     if (openNav) {
@@ -56,14 +50,13 @@ export default function Nav({ openNav, onCloseNav }) {
     <Scrollbar
       sx={{
         height: 1,
-        "& .simplebar-content": {
+        '& .simplebar-content': {
           height: 1,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
         },
-      }}
-    >
-      <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
+      }}>
+      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
         <Logo />
       </Box>
 
@@ -73,12 +66,12 @@ export default function Nav({ openNav, onCloseNav }) {
             <Avatar src={account.photoURL} alt="photoURL" />
 
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {account.displayName}
               </Typography>
 
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                {"@"+account.username}
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {'@' + account.username}
               </Typography>
             </Box>
           </StyledAccount>
@@ -86,7 +79,6 @@ export default function Nav({ openNav, onCloseNav }) {
       </Box>
 
       <NavSection data={navConfig} />
-
     </Scrollbar>
   );
 
@@ -96,8 +88,7 @@ export default function Nav({ openNav, onCloseNav }) {
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV_WIDTH },
-      }}
-    >
+      }}>
       {isDesktop ? (
         <Drawer
           open
@@ -105,11 +96,10 @@ export default function Nav({ openNav, onCloseNav }) {
           PaperProps={{
             sx: {
               width: NAV_WIDTH,
-              bgcolor: "background.default",
-              borderRightStyle: "dashed",
+              bgcolor: 'background.default',
+              borderRightStyle: 'dashed',
             },
-          }}
-        >
+          }}>
           {renderContent}
         </Drawer>
       ) : (
@@ -121,8 +111,7 @@ export default function Nav({ openNav, onCloseNav }) {
           }}
           PaperProps={{
             sx: { width: NAV_WIDTH },
-          }}
-        >
+          }}>
           {renderContent}
         </Drawer>
       )}

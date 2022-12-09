@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { faker } from "@faker-js/faker";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { faker } from '@faker-js/faker';
 //@mui
 import {
   Card,
@@ -20,51 +20,48 @@ import {
   MenuItem,
   Popover,
   Chip,
-} from "@mui/material";
+} from '@mui/material';
 // components
-import Iconify from "../../components/iconify";
-import Scrollbar from "../../components/scrollbar";
-import Popup from "../../components/popup";
-import Notification from "../../components/notification";
-import ConfirmPopup from "../../components/confirm-popup";
+import Iconify from '../../components/iconify';
+import Scrollbar from '../../components/scrollbar';
+import Popup from '../../components/popup';
+import Notification from '../../components/notification';
+import ConfirmPopup from '../../components/confirm-popup';
 // sections
-import ShiftForm from "./ShiftForm";
-import ListHead from "../../components/list-head";
-import ShiftListToolbar from "./ShiftListToorbar";
+import ShiftForm from './ShiftForm';
+import ListHead from '../../components/list-head';
+import ShiftListToolbar from './ShiftListToorbar';
 // utils
-import { convertDateToStr, convertTimeToStr } from "../../utils/timeFormat.js";
-import {
-  getComparator,
-  stableSort,
-} from "../../utils/sortEngine.js";
+import { convertDateToStr, convertTimeToStr } from '../../utils/timeFormat.js';
+import { getComparator, stableSort } from '../../utils/sortEngine.js';
 // mock
-import SHIFTLIST from "../../mock_data/shift";
+import SHIFTLIST from '../../mock_data/shift';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "date", label: "Ngày", align: "left" },
-  { id: "starttime", label: "Bắt đầu", align: "left" },
-  { id: "endtime", label: "Kết thúc", align: "left" },
-  { id: "status", label: "Trạng thái", align: "left" },
-  { id: "taskcount", label: "Số nhiệm vụ", align: "center" },
-  { id: "taskdone", label: "Xong", align: "center" },
-  { id: "taskbutton" },
-  { id: "menu" },
+  { id: 'date', label: 'Ngày', align: 'left' },
+  { id: 'starttime', label: 'Bắt đầu', align: 'left' },
+  { id: 'endtime', label: 'Kết thúc', align: 'left' },
+  { id: 'status', label: 'Trạng thái', align: 'left' },
+  { id: 'taskcount', label: 'Số nhiệm vụ', align: 'center' },
+  { id: 'taskdone', label: 'Xong', align: 'center' },
+  { id: 'taskbutton' },
+  { id: 'menu' },
 ];
 
 //----------------------------------------------
 
 const initFilterValue = {
   date: null,
-  status: "",
+  status: '',
 };
 
 const initAddValue = {
   starttime: null,
   endtime: null,
   date: null,
-  status: "",
+  status: '',
 };
 
 //----------------------------------------------------------
@@ -78,7 +75,7 @@ export default function ShiftPage() {
       replace: true,
     });
   };
- 
+
   //----------------------------------------------------------
 
   const [shiftList, setShiftList] = useState(SHIFTLIST);
@@ -94,7 +91,7 @@ export default function ShiftPage() {
   const [actStatus, setActStatus] = useState(false);
 
   const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpenNoti(false);
@@ -111,14 +108,14 @@ export default function ShiftPage() {
   const filterRows = () => {
     let filteredList = SHIFTLIST;
     let dateStr = convertDateToStr(filterValues.date);
-    if (filterValues.date !== null && filterValues.status !== "") {
+    if (filterValues.date !== null && filterValues.status !== '') {
       filteredList = SHIFTLIST.filter(
         (shift) =>
           shift.date === dateStr && shift.status === filterValues.status
       );
     } else if (filterValues.date !== null) {
       filteredList = SHIFTLIST.filter((shift) => shift.date === dateStr);
-    } else if (filterValues.status !== "") {
+    } else if (filterValues.status !== '') {
       filteredList = SHIFTLIST.filter(
         (shift) => shift.status === filterValues.status
       );
@@ -143,7 +140,7 @@ export default function ShiftPage() {
       addValues.starttime !== null &&
       addValues.endtime !== null &&
       addValues.date !== null &&
-      addValues.status !== ""
+      addValues.status !== ''
     ) {
       let newShift = {
         shiftid: faker.datatype.uuid(),
@@ -173,8 +170,8 @@ export default function ShiftPage() {
   const handleOpenEditPopup = () => {
     setEditValues({
       ...editValues,
-      starttime: new Date("01/01/1970 " + selectedShift.starttime),
-      endtime: new Date("01/01/1970 " + selectedShift.endtime),
+      starttime: new Date('01/01/1970 ' + selectedShift.starttime),
+      endtime: new Date('01/01/1970 ' + selectedShift.endtime),
       date: selectedShift.date,
       status: selectedShift.status,
     });
@@ -195,7 +192,7 @@ export default function ShiftPage() {
       editValues.starttime !== null &&
       editValues.endtime !== null &&
       editValues.date !== null &&
-      editValues.status !== ""
+      editValues.status !== ''
     ) {
       let idx = shiftList.findIndex((shift) => {
         return shift.shiftid === selectedShift.shiftid;
@@ -299,22 +296,22 @@ export default function ShiftPage() {
 
   //---------------------------------------------------------
 
-  const [order, setOrder] = useState("asc");
+  const [order, setOrder] = useState('asc');
 
-  const [orderBy, setOrderBy] = useState("name");
+  const [orderBy, setOrderBy] = useState('name');
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
   //---------------------------------------------------------
 
   const statusColor = (status) => {
-    if (status === "Chưa diễn ra") return "warning";
-    else if (status === "Kết thúc") return "success";
-    else return "secondary";
+    if (status === 'Chưa diễn ra') return 'warning';
+    else if (status === 'Kết thúc') return 'success';
+    else return 'secondary';
   };
 
   //---------------------------------------------------------
@@ -326,16 +323,14 @@ export default function ShiftPage() {
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          mb={5}
-        >
+          mb={5}>
           <Typography variant="h4" gutterBottom>
             Danh sách ca
           </Typography>
           <Button
             variant="contained"
             startIcon={<Iconify icon="eva:plus-fill" />}
-            onClick={() => setOpenPopup(true)}
-          >
+            onClick={() => setOpenPopup(true)}>
             Tạo ca mới
           </Button>
         </Stack>
@@ -348,7 +343,7 @@ export default function ShiftPage() {
             filterRows={filterRows}
           />
           <Scrollbar>
-            <TableContainer sx={{ minWidth: 900 }}>
+            <TableContainer sx={{ minWidth: 900 }} style={{ padding: '30px' }}>
               <Table>
                 <ListHead
                   order={order}
@@ -381,8 +376,7 @@ export default function ShiftPage() {
                           key={shiftid}
                           tabIndex={-1}
                           role="checkbox"
-                          selected={selectedShift}
-                        >
+                          selected={selectedShift}>
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={selectedShift}
@@ -404,19 +398,17 @@ export default function ShiftPage() {
                           <TableCell
                             align="center"
                             sx={{
-                              fontWeight: "bold",
+                              fontWeight: 'bold',
                               color: theme.palette.text.markup,
-                            }}
-                          >
+                            }}>
                             {taskdone}
                           </TableCell>
 
                           <TableCell align="center">
                             <Button
                               variant="outlined"
-                              sx={{ fontSize: "14px", borderRadius: 30 }}
-                              onClick={() => navToTask(shiftid)}
-                            >
+                              sx={{ fontSize: '14px', borderRadius: 30 }}
+                              onClick={() => navToTask(shiftid)}>
                               Nhiệm vụ
                             </Button>
                           </TableCell>
@@ -428,9 +420,8 @@ export default function ShiftPage() {
                               onClick={(event) => {
                                 handleOpenMenu(event);
                                 setSelectedShift(shift);
-                              }}
-                            >
-                              <Iconify icon={"eva:more-vertical-fill"} />
+                              }}>
+                              <Iconify icon={'eva:more-vertical-fill'} />
                             </IconButton>
                           </TableCell>
                         </TableRow>
@@ -462,27 +453,26 @@ export default function ShiftPage() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleCloseMenu}
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
           sx: {
             p: 1,
             width: 140,
-            "& .MuiMenuItem-root": {
+            '& .MuiMenuItem-root': {
               px: 1,
-              typography: "body2",
+              typography: 'body2',
               borderRadius: 0.75,
             },
           },
-        }}
-      >
+        }}>
         <MenuItem onClick={handleOpenEditPopup}>
-          <Iconify icon={"eva:edit-fill"} sx={{ mr: 2 }} />
+          <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Chỉnh sửa
         </MenuItem>
 
-        <MenuItem sx={{ color: "error.main" }} onClick={handleOpenConfirm}>
-          <Iconify icon={"eva:trash-2-outline"} sx={{ mr: 2 }} />
+        <MenuItem sx={{ color: 'error.main' }} onClick={handleOpenConfirm}>
+          <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Xóa ca
         </MenuItem>
       </Popover>
@@ -490,8 +480,7 @@ export default function ShiftPage() {
       <Popup
         title="Tạo ca mới"
         openPopup={openPopup}
-        setOpenPopup={setOpenPopup}
-      >
+        setOpenPopup={setOpenPopup}>
         <ShiftForm
           values={addValues}
           onValues={handleChangeAddValues}
@@ -502,8 +491,7 @@ export default function ShiftPage() {
       <Popup
         title="Chỉnh sửa ca"
         openPopup={openEditPopup}
-        setOpenPopup={setOpenEditPopup}
-      >
+        setOpenPopup={setOpenEditPopup}>
         <ShiftForm
           values={editValues}
           onValues={handleChangeEditValues}

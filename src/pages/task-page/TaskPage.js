@@ -1,5 +1,5 @@
-import { useState, useEffect, forwardRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, forwardRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   LinearProgress,
   Box,
@@ -24,56 +24,56 @@ import {
   Dialog,
   DialogActions,
   Slide,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import DoneAllIcon from "@mui/icons-material/DoneAll";
-import AddTaskIcon from "@mui/icons-material/AddTask";
-import ErrorIcon from "@mui/icons-material/Error";
+} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import ErrorIcon from '@mui/icons-material/Error';
 
 // sections
-import TaskToolbar from "./TaskToolbar";
+import TaskToolbar from './TaskToolbar';
 // component
-import Iconify from "../../components/iconify";
-import Notification from "../../components/notification";
-import Scrollbar from "../../components/scrollbar";
-import ListHead from "../../components/list-head";
-import ConfirmPopup from "../../components/confirm-popup";
+import Iconify from '../../components/iconify';
+import Notification from '../../components/notification';
+import Scrollbar from '../../components/scrollbar';
+import ListHead from '../../components/list-head';
+import ConfirmPopup from '../../components/confirm-popup';
 // mock
-import NOTILIST from "../../mock_data/notification";
-import TASKLIST from "../../mock_data/Task";
-import SHIFTLIST from "../../mock_data/shift";
-import VEHICLELIST from "../../mock_data/Vehicle";
-import COLLECTORLIST from "../../mock_data/Collector";
-import SHIFTTASK from "../../mock_data/Shift_Task";
+import NOTILIST from '../../mock_data/notification';
+import TASKLIST from '../../mock_data/Task';
+import SHIFTLIST from '../../mock_data/shift';
+import VEHICLELIST from '../../mock_data/Vehicle';
+import COLLECTORLIST from '../../mock_data/Collector';
+import SHIFTTASK from '../../mock_data/Shift_Task';
 // utils
-import { getComparator, stableSort } from "../../utils/sortEngine.js";
-import { getRandomIntInclusive } from "../../utils/mathSupport.js";
+import { getComparator, stableSort } from '../../utils/sortEngine.js';
+import { getRandomIntInclusive } from '../../utils/mathSupport.js';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "Task_ID", label: "ID nhiệm vụ", align: "left" },
-  { id: "Status", label: "Trạng thái", align: "left" },
-  { id: "Vehicle_ID", label: "Mã phương tiện", align: "left" },
-  { id: "Collector", label: "Tài xế", align: "left" },
-  { id: "Route_ID", label: "Mã lộ trình", align: "left" },
-  { id: "button" },
-  { id: "menu" },
+  { id: 'Task_ID', label: 'ID nhiệm vụ', align: 'left' },
+  { id: 'Status', label: 'Trạng thái', align: 'left' },
+  { id: 'Vehicle_ID', label: 'Mã phương tiện', align: 'left' },
+  { id: 'Collector', label: 'Tài xế', align: 'left' },
+  { id: 'Route_ID', label: 'Mã lộ trình', align: 'left' },
+  { id: 'button' },
+  { id: 'menu' },
 ];
 
 const NOTI_PER_PAGE = 2;
 
 const progressMapping = {
-  "bắt đầu": "Đang thu gom",
-  "thu gom": "Vận chuyển",
-  "vận chuyển": "Hoàn thành",
+  'bắt đầu': 'Đang thu gom',
+  'thu gom': 'Vận chuyển',
+  'vận chuyển': 'Hoàn thành',
 };
 
 //----------------------------------------------
 
 const initFilterValue = {
-  collector_name: "",
-  status: "",
+  collector_name: '',
+  status: '',
 };
 
 //------------------------------------------------------
@@ -88,7 +88,7 @@ export default function TaskPage() {
   const navigate = useNavigate();
 
   const navToAddTask = () => {
-    navigate("/app/addTask", {
+    navigate('/app/addTask', {
       state: {
         shiftid: shiftid,
       },
@@ -129,8 +129,8 @@ export default function TaskPage() {
     setShiftInfo(shiftinfo_);
 
     //handle if has new task
-    if (localStorage.getItem("new_task") !== null) {
-      var parse_task = JSON.parse(localStorage.getItem("new_task"));
+    if (localStorage.getItem('new_task') !== null) {
+      var parse_task = JSON.parse(localStorage.getItem('new_task'));
       //console.log(parse_task);
 
       // check collector and vehicle
@@ -151,7 +151,7 @@ export default function TaskPage() {
         var new_task = {
           shiftid: Number(shiftid),
           Task_ID: getRandomIntInclusive(60000, 100000),
-          Status: "Chưa bắt đầu",
+          Status: 'Chưa bắt đầu',
           Vehicle_ID: parse_task.vehicle.ID,
           Collector: parse_task.collector.Name,
           Route_ID: VEHICLELIST[ve_idx].Route_ID,
@@ -175,7 +175,7 @@ export default function TaskPage() {
         //console.log("error");
         handleOpenError();
       }
-      localStorage.removeItem("new_task");
+      localStorage.removeItem('new_task');
     }
 
     // handle if has edited task
@@ -241,7 +241,7 @@ export default function TaskPage() {
   const [actStatus, setActStatus] = useState(false);
 
   const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpenNoti(false);
@@ -249,13 +249,13 @@ export default function TaskPage() {
 
   //---------------------------------------------------------
 
-  const [order, setOrder] = useState("asc");
+  const [order, setOrder] = useState('asc');
 
-  const [orderBy, setOrderBy] = useState("Task_ID");
+  const [orderBy, setOrderBy] = useState('Task_ID');
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
@@ -330,22 +330,22 @@ export default function TaskPage() {
 
   const filterRows = () => {
     let filteredList = getTaskList(shiftid);
-    if (filterValues.collector_name !== "" && filterValues.status !== "") {
+    if (filterValues.collector_name !== '' && filterValues.status !== '') {
       filteredList = taskList.filter(
         (task) =>
           task.Collector === filterValues.collector_name &&
           task.Status === filterValues.status
       );
     } else if (
-      filterValues.collector_name === "" &&
-      filterValues.status !== ""
+      filterValues.collector_name === '' &&
+      filterValues.status !== ''
     ) {
       filteredList = taskList.filter(
         (task) => task.Status === filterValues.status
       );
     } else if (
-      filterValues.collector_name !== "" &&
-      filterValues.status === ""
+      filterValues.collector_name !== '' &&
+      filterValues.status === ''
     ) {
       filteredList = taskList.filter(
         (task) => task.Collector === filterValues.collector_name
@@ -381,8 +381,8 @@ export default function TaskPage() {
   const [notiList, setNotiList] = useState(NOTILIST);
 
   const handleConfirmProgress = (noti) => {
-    let content_parse = noti.content.split(" ");
-    let progress = [content_parse[5], content_parse[6]].join(" ");
+    let content_parse = noti.content.split(' ');
+    let progress = [content_parse[5], content_parse[6]].join(' ');
     setActStatus(false);
     const newState = taskList.map((obj) => {
       if (obj.Task_ID === noti.taskID) {
@@ -449,16 +449,16 @@ export default function TaskPage() {
   //---------------------------------------------------------
 
   const statusColor = (status) => {
-    if (status === "Chưa bắt đầu") return "warning";
-    else if (status === "Đang thu gom") return "primary";
-    else if (status === "Vận chuyển") return "secondary";
-    else return "success";
+    if (status === 'Chưa bắt đầu') return 'warning';
+    else if (status === 'Đang thu gom') return 'primary';
+    else if (status === 'Vận chuyển') return 'secondary';
+    else return 'success';
   };
 
   const statusShiftColor = (status) => {
-    if (status === "Chưa diễn ra") return "warning";
-    else if (status === "Kết thúc") return "success";
-    else return "secondary";
+    if (status === 'Chưa diễn ra') return 'warning';
+    else if (status === 'Kết thúc') return 'success';
+    else return 'secondary';
   };
 
   //---------------------------------------------------------
@@ -471,37 +471,33 @@ export default function TaskPage() {
           xs={12}
           md={7}
           sx={{
-            padding: "18px",
-          }}
-        >
+            padding: '18px',
+          }}>
           <Paper
             elevation={3}
             sx={{
-              padding: "32px",
-              display: "flex",
-              flexDirection: "column",
+              padding: '32px',
+              display: 'flex',
+              flexDirection: 'column',
               mt: 5,
-            }}
-          >
+            }}>
             <Box
               sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                alignItems: "center",
-                gap: "18px",
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                gap: '18px',
                 mb: 3,
-              }}
-            >
+              }}>
               <IconButton
-                sx={{ height: "32px", width: "32px" }}
+                sx={{ height: '32px', width: '32px' }}
                 onClick={() =>
-                  navigate("/app", {
+                  navigate('/app', {
                     replace: true,
                   })
-                }
-              >
-                <ArrowBackIcon sx={{ fontSize: "32px" }} />
+                }>
+                <ArrowBackIcon sx={{ fontSize: '32px' }} />
               </IconButton>
               <Typography variant="h4">Thông tin ca</Typography>
               <Typography variant="body1">#{shiftid}</Typography>
@@ -511,12 +507,11 @@ export default function TaskPage() {
               <Grid item xs={6}>
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignContent: "center",
-                    gap: "10px",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignContent: 'center',
+                    gap: '10px',
+                  }}>
                   <Iconify icon="material-symbols:calendar-month" />
                   <Typography variant="body1" sx={{ mb: 3 }}>
                     <b>Ngày: </b>
@@ -531,12 +526,11 @@ export default function TaskPage() {
               <Grid item xs={6}>
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignContent: "center",
-                    gap: "10px",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignContent: 'center',
+                    gap: '10px',
+                  }}>
                   <Iconify icon="material-symbols:nest-clock-farsight-analog-outline" />
                   <Typography variant="body1" sx={{ mb: 3 }}>
                     <b>Giờ bắt đầu: </b>
@@ -545,12 +539,11 @@ export default function TaskPage() {
                 </Box>
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignContent: "center",
-                    gap: "10px",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignContent: 'center',
+                    gap: '10px',
+                  }}>
                   <Iconify icon="material-symbols:nest-clock-farsight-analog-outline" />
                   <Typography variant="body1">
                     <b>Giờ kết thúc: </b>
@@ -569,7 +562,7 @@ export default function TaskPage() {
                   sx={{
                     height: 25,
                     borderRadius: 50,
-                    "& .MuiLinearProgress-bar": {
+                    '& .MuiLinearProgress-bar': {
                       borderRadius: 50,
                     },
                   }}
@@ -588,25 +581,22 @@ export default function TaskPage() {
           xs={12}
           md={5}
           sx={{
-            paddingLeft: "18px",
-            paddingRight: "18px",
-          }}
-        >
+            paddingLeft: '18px',
+            paddingRight: '18px',
+          }}>
           <Paper
             elevation={3}
             sx={{
-              padding: "32px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+              padding: '32px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}>
             <Typography
               variant="h4"
               sx={{
                 mb: 3,
-              }}
-            >
+              }}>
               Thông báo tiến độ
             </Typography>
             {notiList
@@ -621,24 +611,22 @@ export default function TaskPage() {
                     sx={{
                       padding: 2,
                       paddingBottom: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      bgcolor: "#EBF8F2",
+                      display: 'flex',
+                      flexDirection: 'column',
+                      bgcolor: '#EBF8F2',
                       borderRadius: 3,
                       mb: 2,
-                      width: "100%",
+                      width: '100%',
                     }}
-                    key={idx}
-                  >
+                    key={idx}>
                     <Box
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignContent: "center",
-                        gap: "10px",
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignContent: 'center',
+                        gap: '10px',
                         mb: 1,
-                      }}
-                    >
+                      }}>
                       <Typography variant="body2">
                         <em>{minute} phút trước</em>
                       </Typography>
@@ -648,15 +636,13 @@ export default function TaskPage() {
                       variant="subtitle1"
                       sx={{
                         mb: 1,
-                      }}
-                    >
+                      }}>
                       {content}
                     </Typography>
                     <Button
                       startIcon={<DoneAllIcon />}
                       onClick={() => handleConfirmProgress(noti)}
-                      sx={{ width: 120 }}
-                    >
+                      sx={{ width: 120 }}>
                       Xác nhận
                     </Button>
                   </Box>
@@ -674,20 +660,18 @@ export default function TaskPage() {
       <Container>
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
             mb: 5,
             mt: 3,
             gap: 3,
-          }}
-        >
+          }}>
           <Typography variant="h4">Danh sách nhiệm vụ</Typography>
           <Button
             variant="contained"
             startIcon={<AddTaskIcon />}
-            onClick={navToAddTask}
-          >
+            onClick={navToAddTask}>
             Phân nhiệm vụ mới
           </Button>
         </Box>
@@ -700,7 +684,7 @@ export default function TaskPage() {
             filterRows={filterRows}
           />
           <Scrollbar>
-            <TableContainer sx={{ minWidth: 900 }}>
+            <TableContainer sx={{ minWidth: 900 }} style={{ padding: '30px' }}>
               <Table>
                 <ListHead
                   order={order}
@@ -731,8 +715,7 @@ export default function TaskPage() {
                           key={Task_ID}
                           tabIndex={-1}
                           role="checkbox"
-                          selected={selectedTask}
-                        >
+                          selected={selectedTask}>
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={selectedTask}
@@ -742,7 +725,7 @@ export default function TaskPage() {
                           <TableCell align="left">{Task_ID}</TableCell>
 
                           <TableCell align="left">
-                            {" "}
+                            {' '}
                             <Chip label={Status} color={statusColor(Status)} />
                           </TableCell>
 
@@ -756,8 +739,7 @@ export default function TaskPage() {
                             <Button
                               variant="outlined"
                               onClick={() => navToTaskDetail(Task_ID)}
-                              sx={{ fontSize: "14px", borderRadius: 30 }}
-                            >
+                              sx={{ fontSize: '14px', borderRadius: 30 }}>
                               Chi tiết
                             </Button>
                           </TableCell>
@@ -769,9 +751,8 @@ export default function TaskPage() {
                               onClick={(event) => {
                                 handleOpenMenu(event);
                                 setSelectedTask(task);
-                              }}
-                            >
-                              <Iconify icon={"eva:more-vertical-fill"} />
+                              }}>
+                              <Iconify icon={'eva:more-vertical-fill'} />
                             </IconButton>
                           </TableCell>
                         </TableRow>
@@ -803,27 +784,26 @@ export default function TaskPage() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleCloseMenu}
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
           sx: {
             p: 1,
             width: 140,
-            "& .MuiMenuItem-root": {
+            '& .MuiMenuItem-root': {
               px: 1,
-              typography: "body2",
+              typography: 'body2',
               borderRadius: 0.75,
             },
           },
-        }}
-      >
+        }}>
         <MenuItem onClick={() => handleEditTask(selectedTask)}>
-          <Iconify icon={"eva:edit-fill"} sx={{ mr: 2 }} />
+          <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Chỉnh sửa
         </MenuItem>
 
-        <MenuItem sx={{ color: "error.main" }} onClick={handleOpenConfirm}>
-          <Iconify icon={"eva:trash-2-outline"} sx={{ mr: 2 }} />
+        <MenuItem sx={{ color: 'error.main' }} onClick={handleOpenConfirm}>
+          <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Xóa
         </MenuItem>
       </Popover>
@@ -847,17 +827,15 @@ export default function TaskPage() {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleCloseError}
-        aria-describedby="alert-dialog-slide-description"
-      >
+        aria-describedby="alert-dialog-slide-description">
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             p: 4,
             gap: 3,
-          }}
-        >
+          }}>
           <ErrorIcon color="error" sx={{ height: 50, width: 50 }} />
           <Typography variant="h5">
             Trùng nhân viên hoặc trùng phương tiện với nhiệm vụ khác?!

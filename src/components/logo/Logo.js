@@ -1,11 +1,15 @@
-import PropTypes from "prop-types";
-import { Link as RouterLink } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 //@mui
-import { Link, Avatar } from "@mui/material";
+import { Link, Avatar } from '@mui/material';
 
 const Logo = ({ disabledLink = false, sx, ...other }, ref) => {
   const logo = (
-    <Avatar alt="Logo" src="/assets/images/logo.png" sx={{ width: 60, height: 60, m: 1 }} />
+    <Avatar
+      alt="Logo"
+      src="https://raw.githubusercontent.com/anduc146khmt/uwc-bit-by-bit/an/front-end/public/assets/images/logo.png"
+      sx={{ width: 60, height: 60, m: 1 }}
+    />
   );
 
   if (disabledLink) {
@@ -13,7 +17,7 @@ const Logo = ({ disabledLink = false, sx, ...other }, ref) => {
   }
 
   return (
-    <Link to="/app" component={RouterLink} sx={{ display: "contents" }}>
+    <Link to="/app" component={RouterLink} sx={{ display: 'contents' }}>
       {logo}
     </Link>
   );
