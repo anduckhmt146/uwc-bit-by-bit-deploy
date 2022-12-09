@@ -91,7 +91,7 @@ export default function VehiclePage() {
     <Card
       style={{
         height: 750,
-        width: '60%',
+        width: '80%',
         margin: '100px auto',
         padding: '50px 50px 70px 50px',
       }}>
