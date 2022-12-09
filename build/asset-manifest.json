@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/uwc-bit-by-bit-deploy/static/js/main.6f0fd59d.js",
+    "index.html": "/uwc-bit-by-bit-deploy/index.html",
+    "main.6f0fd59d.js.map": "/uwc-bit-by-bit-deploy/static/js/main.6f0fd59d.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6f0fd59d.js"
+  ]
+}

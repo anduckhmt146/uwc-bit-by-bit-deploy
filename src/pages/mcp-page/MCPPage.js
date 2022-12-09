@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Card, Typography } from '@mui/material';
 const columns = [
-  { field: 'id', headerName: 'ID', width: 300 },
-  { field: 'Address', headerName: 'Address', width: 300 },
+  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'Address', headerName: 'Address', width: 500 },
 ];
 
 const rows = [
@@ -94,7 +94,7 @@ export default function MCPPage() {
     <Card
       style={{
         height: 750,
-        width: '60%',
+        width: '80%',
         margin: '100px auto',
         padding: '50px 50px 70px 50px',
       }}>
